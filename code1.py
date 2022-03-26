@@ -2,6 +2,7 @@ from imdb import Cinemagoer
 import string
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from thefuzz import fuzz
+import numpy as np
 # create an instance of the Cinemagoer class
 ia = Cinemagoer()
 
@@ -53,6 +54,17 @@ def natural_language_processing(name,num):
     score = SentimentIntensityAnalyzer().polarity_scores(sentence)
     print(score)
 
+def text_similarity(movie,num):
+    '''compare the similarity of two texts'''
+    text1 = movies_review(movie, num)
+    text2 = movies_review(movie,num+1)
+    ratio = fuzz.ratio(text1,text2)
+    partial = fuzz.ratio(text1,text2)
+    sort= fuzz.token_sort_ratio(text1, text2)
+    print(f'The fuzz ratio between the two text is {ratio}, the partial ratio is {partial}, and the sorted ratio is {sort}.')
+
+def text_clustering():
+    pass
 def main():
     hist = frequency('Hereditary',0)
     hist2 = frequency('Hereditary',3)
@@ -60,7 +72,8 @@ def main():
     #print(hist)
     #top_10(hist, num=10)
     #print(unique_words(hist,hist2))
-    natural_language_processing('Hereditary',0)
+    #natural_language_processing('Hereditary',0)
+    text_similarity('Hereditary',0)
 
 
 if __name__ == '__main__':
