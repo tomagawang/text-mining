@@ -1,6 +1,7 @@
 from imdb import Cinemagoer
 import string
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
+from thefuzz import fuzz
 # create an instance of the Cinemagoer class
 ia = Cinemagoer()
 
@@ -46,8 +47,11 @@ def unique_words(hist1,hist2):
             lst.append(word)
     return lst
 
-def natural_language_processing(text):
-
+def natural_language_processing(name,num):
+    '''process the movie review and return the sentiment score'''
+    sentence = movies_review(name,num)
+    score = SentimentIntensityAnalyzer().polarity_scores(sentence)
+    print(score)
 
 def main():
     hist = frequency('Hereditary',0)
@@ -55,7 +59,8 @@ def main():
     #print(movies_review('Hereditary',0))
     #print(hist)
     #top_10(hist, num=10)
-    print(unique_words(hist,hist2))
+    #print(unique_words(hist,hist2))
+    natural_language_processing('Hereditary',0)
 
 
 if __name__ == '__main__':
