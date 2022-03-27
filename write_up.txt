@@ -1,0 +1,21 @@
+I used IMDB movie reviews. I chose the film Hereditary to find the reviews associated with the review.
+I used dictionary I attempted to look for what words are usually used in these reviews, find the unique words in
+these reviews and the most positive and negative review. I used dictionary, list data sturcture in this process.
+
+I first created a function to pull the movie review from IMDB. This function puts the review nicely into a string. 
+it uses the cinemagoer package to pull the data from iMDB. We used list struncture to get the actual review. 
+Then I created a function to process the movie review and generate a dictionary with the word and the frequency of the appearance in the review.
+I stripped the punctuation and whitespaces from the review string. I also used the stopwords file to ignore the stopwords and find 
+the other words and their frequnecy. I stored these data inside a dictionary.
+
+I then created a function that sort the dictionary by frequency and prints out the top 10 most common words. I stored the sorted data
+inside a list and prints out the first ten items in the list.Then I created another function to find the unique words between two dictionaries. 
+I used for loop to check if there are match if there is no match, the word is stored inside a list.
+Then I tried the sentiment analyzer and created a basic function for it. Then I tried the text_similary scoring using fuzz, and created a basic function
+that return the results.
+
+I also created a new document that looks for the most positive review and most negative review in the first couple reviews.
+I created a dictionary that stored the review number as key, positive or negative score as value using the sentiment analyzer. 
+Then I sort the dictionary into a list. I use the first movie review number in the list to return the most positive or negative review.
+I also created a new document to find the top 10 words in the first couple of reviews. I used a dictionary to store all the small dictionary
+created from each review and return the top 10 words in the new dictionary. 

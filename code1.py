@@ -5,6 +5,18 @@ from thefuzz import fuzz
 # create an instance of the Cinemagoer class
 ia = Cinemagoer()
 
+f = open('data/stopwords.txt')
+
+def word_processing(f):
+    hist = {}
+    for word in f:
+        word = word.strip()
+        word = word.lower()
+        hist[word] = hist.get(word, 0) + 1
+    return hist
+
+stopwords = word_processing(f)
+
 def movies_review(name,num):
     '''takes movie name and the # of the review returns the first review of it on IMDB'''
     movie = ia.search_movie(name)[0]
@@ -21,9 +33,10 @@ def frequency(movie,num):
     strippables = string.punctuation + string.whitespace
     words = fp.split()
     for word in words:
-        word = word.strip(strippables)
-        word = word.lower()
-        hist[word] = hist.get(word, 0) + 1
+        if word not in stopwords:
+            word = word.strip(strippables)
+            word = word.lower()
+            hist[word] = hist.get(word, 0) + 1
     return hist
 
 def top_10(hist,num=10):
@@ -51,10 +64,10 @@ def natural_language_processing(name,num):
     '''process the movie review and return the sentiment score'''
     sentence = movies_review(name,num)
     score = SentimentIntensityAnalyzer().polarity_scores(sentence)
-    print(score)
+    return score
 
 def text_similarity(movie,num):
-    '''compare the similarity of two texts'''
+    '''compare the similarity of two texts, and return fuzz ratios'''
     text1 = movies_review(movie, num)
     text2 = movies_review(movie,num+1)
     ratio = fuzz.ratio(text1,text2)
@@ -67,10 +80,10 @@ def main():
     hist2 = frequency('Hereditary',3)
     #print(movies_review('Hereditary',0))
     #print(hist)
-    #top_10(hist, num=10)
+    # top_10(hist, num=10)
     #print(unique_words(hist,hist2))
-    #natural_language_processing('Hereditary',0)
-    text_similarity('Hereditary',0)
+    # print(natural_language_processing('Hereditary',0))
+    #text_similarity('Hereditary',0)
 
 
 if __name__ == '__main__':
