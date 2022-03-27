@@ -1,0 +1,18 @@
+I used IMDB movie reviews. I chose the film Hereditary to find the reviews associated with the review. I used dictionary I attempted to look for what words are usually used in these reviews, find the unique words in these reviews and the most positive and negative review. I used dictionary, list data sturcture in this process.
+
+I first created a function to pull the movie review from IMDB. This function puts the review nicely into a string. It uses the cinemagoer package to pull the data from iMDB. We used list struncture to get the actual review. Then I created a function to process the movie review and generate a dictionary with the word and the frequency of the appearance in the review. I stripped the punctuation and whitespaces from the review string. I also used the stopwords file to ignore the stopwords and find the other words and their frequnecy. I stored these data inside a dictionary.
+
+I then created a function that sort the dictionary by frequency and prints out the top 10 most common words. I stored the sorted data inside a list and prints out the first ten items in the list.Then I created another function to find the unique words between two dictionaries. I used for loop to check if there are match if there is no match, the word is stored inside a list. Then I tried the sentiment analyzer and created a basic function for it. Then I tried the text_similary scoring using fuzz, and created a basic function
+that return the results.
+
+I also created a new document that looks for the most positive review and most negative review in the first couple reviews. I created a dictionary that stored the review number as key, positive or negative score as value using the sentiment analyzer. Then I sort the dictionary into a list. I use the first movie review number in the list to return the most positive or negative review. I also created a new document to find the top 10 words in the first couple of reviews. I used a dictionary to store all the small dictionary created from each review and return the top 10 words in the new dictionary. Then I created a function to find the unique words in the first 10 reviews that the other reviewed does not use using dictionary and put all the word with only 1 for frequnecy into that list.
+
+For the first part where I looked for the most positive review and most negative review in terms of sentiment. In the positive review, I can see words like "admire", "satisfactory", "strong", "good","surprising", which contributes to the positive rating. In the negative review, I can see words like "wrong","average","suffering", "varying" which may contribute to the negative rating.
+
+For the second part where I looked for the top 10 words in the first 20 reviews, I found that words like "film": this is a film review; "movie": same logic for movie review; "horror": this is a horror movie; "family": the movie is about a family. It is not surprising that these words are used here. 
+
+The result for the unique words, I found that there are a lot of unique words used. It is very hard to find a pattern in them, but there are some words that makes sense because they are not normally used such as "ghoulish","thought-provoking","polarisation".
+
+I think I achieved my initial goals and got the results I wanted. During the coding process, I used the debugging terminal lots of times, found and fixed
+many issues. I think my coding could be more efficient through suedo coding, I did not do suedo coding, so I forgot what i was going to do a lot of times
+and stuck for a long time before I know what to do. Going forward, I would definitely do more suedo coding. 
