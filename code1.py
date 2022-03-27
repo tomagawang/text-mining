@@ -2,7 +2,6 @@ from imdb import Cinemagoer
 import string
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from thefuzz import fuzz
-import numpy as np
 # create an instance of the Cinemagoer class
 ia = Cinemagoer()
 
@@ -63,8 +62,6 @@ def text_similarity(movie,num):
     sort= fuzz.token_sort_ratio(text1, text2)
     print(f'The fuzz ratio between the two text is {ratio}, the partial ratio is {partial}, and the sorted ratio is {sort}.')
 
-def text_clustering():
-    pass
 def main():
     hist = frequency('Hereditary',0)
     hist2 = frequency('Hereditary',3)
